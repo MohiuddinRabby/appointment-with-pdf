@@ -1,4 +1,10 @@
-
+body {
+  margin: 0;
+}
+.dark-mode {
+  color: #fff;
+  background-color: #0a192f;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -13,4 +19,3 @@
 .App-link {
   color: #61dafb;
 }
-

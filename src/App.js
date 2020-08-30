@@ -22,6 +22,9 @@ const App = () => {
       },
     ];
     setData(info);
+    setName("");
+    setDate("");
+    setMobile("");
   };
   return (
     <div className="header">
@@ -34,6 +37,7 @@ const App = () => {
                 <div className="form-group">
                   <label>Date</label>
                   <input
+                    value={date}
                     type="date"
                     name="date"
                     className="form-control"
@@ -64,6 +68,7 @@ const App = () => {
                   <input
                     type="text"
                     name="name"
+                    value={name}
                     className="form-control"
                     ref={register({
                       required: "Name Required",
@@ -79,6 +84,7 @@ const App = () => {
                   <input
                     type="number"
                     name="phone_number"
+                    value={mobile}
                     className="form-control"
                     ref={register({
                       required: "phone number Required",
@@ -89,8 +95,8 @@ const App = () => {
                     {errors.phone_number && errors.phone_number.message}
                   </p>
                 </div>
-                <button type="submit" className="btn btn-primary">
-                  Submit
+                <button type="submit" className="btn btn-info">
+                  Get Serial
                 </button>
               </form>
             </div>
