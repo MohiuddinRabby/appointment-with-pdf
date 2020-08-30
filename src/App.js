@@ -2,14 +2,16 @@ import React from "react";
 import "./App.css";
 import { useState } from "react";
 import Info from "./Info";
+import { useForm } from "react-hook-form";
 const App = () => {
-  const [date, setDate] = useState();
+  //useForm to handle values of input
+  const { handleSubmit, register, errors } = useForm();
+  const [date, setDate] = useState("");
   const [problem, setProblem] = useState("Cardiac");
-  const [name, setName] = useState();
-  const [mobile, setMobile] = useState();
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
   const [data, setData] = useState([]);
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleOnSubmit = () => {
     const info = [
       {
         serial: Math.floor(Math.random() * 50) + 1,
@@ -28,14 +30,23 @@ const App = () => {
           <div className="row">
             <div className="col-md-6">
               <h2>Doctor's appointment</h2>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit(handleOnSubmit)}>
                 <div className="form-group">
                   <label>Date</label>
                   <input
                     type="date"
+                    name="date"
                     className="form-control"
+                    ref={register({
+                      required: "Date Required",
+                    })}
                     onChange={(e) => setDate(e.target.value)}
                   />
+                  {
+                    <p className="text-danger">
+                      {errors.date && errors.date.message}
+                    </p>
+                  }
                 </div>
                 <div className="form-group">
                   <label>Problem Type</label>
@@ -52,17 +63,31 @@ const App = () => {
                   <label>Name</label>
                   <input
                     type="text"
+                    name="name"
                     className="form-control"
+                    ref={register({
+                      required: "Name Required",
+                    })}
                     onChange={(e) => setName(e.target.value)}
                   />
+                  <p className="text-danger">
+                    {errors.name && errors.name.message}
+                  </p>
                 </div>
                 <div className="form-group">
                   <label>Mobile</label>
                   <input
                     type="number"
+                    name="phone_number"
                     className="form-control"
+                    ref={register({
+                      required: "phone number Required",
+                    })}
                     onChange={(e) => setMobile(e.target.value)}
                   />
+                  <p className="text-danger">
+                    {errors.phone_number && errors.phone_number.message}
+                  </p>
                 </div>
                 <button type="submit" className="btn btn-primary">
                   Submit

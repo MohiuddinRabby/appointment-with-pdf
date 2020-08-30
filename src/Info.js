@@ -9,9 +9,9 @@ const Info = (props) => {
         <div className="card-body">
           <h5 className="card-text">Serial: {serial}</h5>
           <h5 className="card-text">Name: {name}</h5>
+          <h5 className="card-text">Problem: {problem}</h5>
           <h5 className="card-text">Mobile: {mobile}</h5>
           <h5 className="card-text">Date: {date}</h5>
-          <h5 className="card-text">Problem: {problem}</h5>
         </div>
       </div>
       <br />
